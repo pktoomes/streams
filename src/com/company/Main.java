@@ -34,8 +34,15 @@ public class Main {
         //Print out tuesday entries
         System.out.println("For Loop:");
         // write for loop
+        for(Entry entry: entries){
+            if(entry.equals(Day.TUESDAY)){
+                System.out.println(entry + ", ");
+            }return;
+        }
         System.out.println("\nStream, filter, forEach:");
-        // write stream
+        entries.stream()
+        .filter(entry -> entry.equals(Day.TUESDAY))
+        .forEach(entry -> System.out.println(entry + ", "));// write stream
         System.out.println();
     }
 
@@ -43,11 +50,24 @@ public class Main {
         //Count the number of Tuesday, Wednesday, and Thursday entries
         System.out.println("For Loop:");
         int count = 0;
-        // write for loop
+        for(Entry entry: entries){
+            if(entry.equals(Day.TUESDAY)){
+                count++;
+                // write for loop
+            } else if (entry.equals(Day.WEDNESDAY)) {
+                count++;
+            } else if (entry.equals(Day.THURSDAY)) {
+                count++;
+            }return;
+        }
         System.out.println("Number of entries on Tuesday, Wednesday or Thursday: " + count);
         System.out.println("Stream, filter, count: ");
         long count1 = 0;
-        // write stream
+        entries.stream()
+        .filter(entry -> entry.equals(Day.TUESDAY))
+        .filter(entry -> entry.equals(Day.WEDNESDAY))
+        .filter(entry -> entry.equals(Day.THURSDAY))
+        .count();// write stream
         System.out.println("Number of entries on Tuesday, Wednesday or Thursday: " + count1);
         System.out.println();
     }
@@ -56,10 +76,19 @@ public class Main {
         //Create a list of weekend (Saturday and Sunday) entries
         System.out.println("For Loop:");
         List<Entry> weekends = new ArrayList<>();
-        // write for loop
+        for(Entry entry: entries){
+            if(entry.equals(Day.SATURDAY)){
+                weekends.add(entry);// write for loop
+            }else if(entry.equals(Day.SUNDAY)){
+                weekends.add(entry);
+            }return;
+        }
         System.out.println(weekends);
         System.out.println("Stream, filter, collect:");
-        weekends = // write stream use collect as the terminal operation
+        weekends = entries.stream()
+        .filter(entry -> entry.equals(Day.SATURDAY))
+        .filter(entry -> entry.equals(Day.SUNDAY))
+        .collect(Collectors.toList());// write stream use collect as the terminal operation
         System.out.println(weekends);
         System.out.println();
     }
